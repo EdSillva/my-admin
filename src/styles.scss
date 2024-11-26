@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+/* Garantir que o conteúdo ocupe toda a tela */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar {
+  margin: 16px 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+table {
+  width: 100%;
+  margin-top: 16px;
+}
+
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+    margin-right: 16px;
+
+    &.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+}
+
+.content {
+  margin: 16px;
+}

@@ -1,0 +1,39 @@
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.search-bar mat-form-field {
+  width: 75%
+}
+
+.rounded-input {
+  border-radius: 25px;
+}
+
+mat-form-field {
+  display: flex;
+  position: relative;
+}
+
+mat-icon.mat-prefix {
+  margin-right: 8px;
+  color: #757575;
+}
+
+.create-button {
+  display: flex;
+  justify-content: right;
+  margin: 20px 0;
+}
+
+.create-button button {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.leader-select mat-form-field {
+  width: 100%;
+}

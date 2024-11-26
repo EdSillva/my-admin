@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<mat-toolbar #drawer *ngIf="showNavBar" color="primary">
+  <span>My Admin</span>
+  <span class="spacer"></span>
+  <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+  <a mat-button routerLink="/employee" routerLinkActive="active">Funcionários</a>
+  <a mat-button routerLink="/projects" routerLinkActive="active">Projetos</a>
+  <a mat-button routerLink="/login" routerLinkActive="active">Sair</a>
+</mat-toolbar>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

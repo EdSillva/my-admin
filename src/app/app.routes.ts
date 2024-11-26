@@ -7,6 +7,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from '../modules/login/login.component';
 import { HomeComponent } from '../modules/home/home.component';
+import { EmployeesComponent } from '../modules/employees/employees.component';
+import { ProjectsComponent } from '../modules/projects/projects.component';
+import { EmployeeFormComponent } from '../modules/employee-form/employee-form.component';
 
 // Importações do Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,14 +26,19 @@ export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'employee', component: EmployeesComponent },
+  { path: 'projects', component: ProjectsComponent },
+  { path: 'employee/create', component: EmployeeFormComponent },
 ];
 
 @NgModule({
-  declarations: [LoginComponent],
   imports: [
     RouterModule.forRoot(routes),
+    LoginComponent,
+    EmployeesComponent,
+    EmployeeFormComponent,
+    ProjectsComponent,
     AppComponent,
-    HomeComponent,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,

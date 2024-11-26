@@ -1,0 +1,30 @@
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <!-- Campos principais -->
+  <input formControlName="name" placeholder="Name">
+  <input formControlName="email" placeholder="Email">
+  <input formControlName="experience" placeholder="Experience" type="number">
+  <input formControlName="matricula" placeholder="Matricula" type="number">
+  <input formControlName="linkedin" placeholder="LinkedIn">
+  <input formControlName="phone" placeholder="Phone">
+
+  <!-- Technical Skills -->
+  <div formArrayName="technicalSkills">
+    <div *ngFor="let skill of technicalSkills.controls; let i = index" [formGroupName]="i">
+      <input formControlName="title" placeholder="Skill Title">
+      <input formControlName="description" placeholder="Skill Description">
+      <button type="button" (click)="removeTechnicalSkill(i)">Remove</button>
+    </div>
+    <button type="button" (click)="addTechnicalSkill()">Add Skill</button>
+  </div>
+
+  <!-- Certifications -->
+  <div formArrayName="certifications">
+    <div *ngFor="let cert of certifications.controls; let i = index" [formGroupName]="i">
+      <input formControlName="title" placeholder="Certification Title">
+      <button type="button" (click)="removeCertification(i)">Remove</button>
+    </div>
+    <button type="button" (click)="addCertification()">Add Certification</button>
+  </div>
+
+  <button type="submit" [disabled]="!employeeForm.valid">Submit</button>
+</form>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { forkJoin, map, Observable } from 'rxjs';
+import { ProjectService } from '../projects/projects.service';
 
 export interface TechnicalSkill {
   id: number;
@@ -24,7 +25,6 @@ export interface Employee {
   technicalSkills: TechnicalSkill[];
   certifications: Certification[];
 }
-
 @Injectable({
   providedIn: 'root',
 })

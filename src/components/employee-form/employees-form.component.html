@@ -1,0 +1,82 @@
+<div class="container">
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="form-header">
+      <div class="form-title">Funcionário</div>
+      <button type="button" class="close-button" (click)="closeForm()">✖</button>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="name">Nome:</label>
+          <input id="name" type="text" placeholder="Digite o nome" formControlName="name" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input id="email" type="email" placeholder="Digite o email" formControlName="email" />
+        </div>
+
+        <div class="form-group">
+          <label for="matricula">Matrícula:</label>
+          <input id="matricula" type="text" placeholder="Digite a matrícula" formControlName="matricula" />
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label for="experience">Tempo de Experiência:</label>
+          <input id="experience" type="number" placeholder="Digite os anos de experiência"
+            formControlName="experience" />
+        </div>
+
+        <div class="form-group">
+          <label for="linkedin">LinkedIn:</label>
+          <input id="linkedin" type="text" placeholder="Digite o LinkedIn" formControlName="linkedin" />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Telefone:</label>
+          <input id="phone" type="text" placeholder="Digite o telefone" formControlName="phone" />
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="section-title">Certificados</div>
+    <div class="form-group">
+      <input id="certificationInput" type="text" placeholder="Digite o título do certificado" #certificationInput />
+      <button type="button" (click)="addCertification(certificationInput.value); certificationInput.value = ''">
+        Adicionar
+      </button>
+    </div>
+    <ul>
+      <li *ngFor="let cert of certifications; index as i">
+        {{ cert.title }}
+        <button type="button" (click)="removeCertification(i)">Remover</button>
+      </li>
+    </ul>
+
+    <div class="section-title">Competências</div>
+    <div class="form-group">
+      <input id="skillInput" type="text" placeholder="Digite o título da competência" #skillInput />
+      <label for="description">Descrição:</label>
+      <input id="descriptionInput" type="text" placeholder="Digite a descrição da competência" #descriptionInput />
+      <button type="button"
+        (click)="addTechnicalSkill(skillInput.value, descriptionInput.value); skillInput.value = ''; descriptionInput.value = ''">
+        Adicionar
+      </button>
+    </div>
+    <ul>
+      <li *ngFor="let skill of technicalSkills; index as i">
+        <strong>{{ skill.title }}:</strong> {{ skill.description }}
+        <button type="button" (click)="removeTechnicalSkill(i)">Remover</button>
+      </li>
+    </ul>
+
+    <div class="button-group">
+      <button type="submit">Salvar</button>
+    </div>
+  </form>
+</div>

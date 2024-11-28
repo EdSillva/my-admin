@@ -1,0 +1,61 @@
+<div class="container">
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+    <div class="form-header">
+      <div class="form-title">Projeto</div>
+      <button type="button" class="close-button" (click)="closeForm()">✖</button>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="numProject">Número do Projeto:</label>
+          <input id="numProject" type="number" placeholder="Digite o número do projeto" formControlName="numProject" />
+        </div>
+
+        <div class="form-group">
+          <label for="name">Nome do Projeto:</label>
+          <input id="name" type="text" placeholder="Digite o nome do projeto" formControlName="name" />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Descrição:</label>
+          <input id="description" type="text" placeholder="Digite a descrição do projeto"
+            formControlName="description" />
+        </div>
+
+        <div class="form-group">
+          <label for="initialDate">Data Inicial:</label>
+          <input id="initialDate" type="date" formControlName="initialDate" />
+        </div>
+
+        <div class="form-group">
+          <label for="finalDate">Data Final:</label>
+          <input id="finalDate" type="date" formControlName="finalDate" />
+        </div>
+
+        <div class="form-group">
+          <label for="status">Status:</label>
+          <select id="status" formControlName="status">
+            <option [ngValue]="enumStatus.IN_PROGRESS">Em Andamento</option>
+            <option [ngValue]="enumStatus.COMPLETED">Concluído</option>
+            <option [ngValue]="enumStatus.CANCELED">Abortado</option>
+            <option [ngValue]="enumStatus.NOT_STARTED">Não Iniciado</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="leaderId">Líder:</label>
+        <select id="leaderId" formControlName="leaderId">
+          <option *ngFor="let employee of employees" [value]="employee.id">
+            {{ employee.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="submit">Salvar</button>
+    </div>
+  </form>
+</div>

@@ -1,36 +1,62 @@
 <div class="search-bar">
   <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Pesquisar Projetos</mat-label>
+    <mat-label>Pesquisar Projeto</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Digite para pesquisar">
   </mat-form-field>
 </div>
 
-<h1>Projects</h1>
+<h1>Projetos</h1>
+
+<!-- Overlay do Formulário -->
+<div *ngIf="isFormVisible" class="form-overlay">
+  <div class="form-container">
+    <app-project-form *ngIf="isFormVisible" [selectedProject]="selectedProject" (closeFormEvent)="closeForm()"
+      (projectUpdated)="loadProjects()">
+    </app-project-form>
+  </div>
+</div>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!-- Coluna: Nome -->
+  <!-- Coluna: Número do Projeto -->
+  <ng-container matColumnDef="numProject">
+    <th mat-header-cell *matHeaderCellDef>Número do Projeto</th>
+    <td mat-cell *matCellDef="let project">{{ project.numProject }}</td>
+  </ng-container>
+
+  <!-- Coluna: Nome do Projeto -->
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Project Name</th>
+    <th mat-header-cell *matHeaderCellDef>Nome do Projeto</th>
     <td mat-cell *matCellDef="let project">{{ project.name }}</td>
   </ng-container>
 
-  <!-- Coluna: Descrição -->
-  <ng-container matColumnDef="description">
-    <th mat-header-cell *matHeaderCellDef>Description</th>
-    <td mat-cell *matCellDef="let project">{{ project.description }}</td>
+  <!-- Coluna: Nome do Líder -->
+  <ng-container matColumnDef="leader">
+    <th mat-header-cell *matHeaderCellDef>Nome do Líder</th>
+    <td mat-cell *matCellDef="let project">{{ project.leaderName }}</td>
+  </ng-container>
+
+  <!-- Coluna: Status -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let project">{{ project.status }}</td>
   </ng-container>
 
   <!-- Coluna: Ações -->
   <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <th mat-header-cell *matHeaderCellDef>Ações</th>
     <td mat-cell *matCellDef="let project">
-      <button mat-button color="primary" (click)="editProject(project)">Edit</button>
-      <button mat-button color="warn" (click)="deleteProject(project.id)">Delete</button>
+      <button mat-button color="primary" (click)="editProject(project)">Editar</button>
+      <button mat-button color="warn" (click)="deleteProject(project.id)">Excluir</button>
     </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="['name', 'description', 'actions']"></tr>
-  <tr mat-row *matRowDef="let row; columns: ['name', 'description', 'actions']"></tr>
+  <tr mat-header-row *matHeaderRowDef="['numProject', 'name', 'leader', 'status', 'actions']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['numProject', 'name', 'leader', 'status', 'actions']"></tr>
 </table>
+
+<div *ngIf="loading" class="loading-spinner">
+  <mat-spinner></mat-spinner>
+</div>
 
 <div class="create-button">
   <button mat-raised-button color="primary" (click)="createProject()">Novo Projeto</button>

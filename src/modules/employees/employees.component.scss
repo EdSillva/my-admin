@@ -10,6 +10,10 @@
   margin: 24px 0;
 }
 
+.search-bar mat-form-field {
+  width: 75%
+}
+
 .mat-form-field.full-width {
   width: 100%;
 }
@@ -18,8 +22,9 @@ table {
   width: 100%;
 }
 
-.search-bar mat-form-field {
-  width: 75%
+.create-button button {
+  font-size: 16px;
+  text-transform: uppercase;
 }
 
 .rounded-input {

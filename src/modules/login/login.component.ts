@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../../app/material.component';
+import { MaterialModule } from '../../app/material.module';
 
 @Component({
   selector: 'app-login',

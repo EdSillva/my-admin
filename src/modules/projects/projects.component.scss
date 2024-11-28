@@ -26,7 +26,7 @@ mat-icon.mat-prefix {
 .create-button {
   display: flex;
   justify-content: right;
-  margin: 20px 0;
+  margin: 24px 0;
 }
 
 .create-button button {
@@ -36,4 +36,38 @@ mat-icon.mat-prefix {
 
 .leader-select mat-form-field {
   width: 100%;
+}
+
+/* Estilo para a sobreposição do formulário */
+.form-overlay {
+  position: fixed;  /* Fixa o formulário sobre a tela */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);  /* Fundo semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;  /* Certifique-se de que a sobreposição ficará acima de outros elementos */
+}
+
+.form-container {
+  background-color: white;  /* Fundo branco para o formulário */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;  /* Limita a largura do formulário */
+  width: 100%;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Efeito de fade-in para o formulário */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

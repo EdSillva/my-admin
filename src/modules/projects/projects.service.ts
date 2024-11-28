@@ -1,15 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { forkJoin, map, Observable } from 'rxjs';
+import { EmployeeService } from '../employees/employees.service';
 
+export enum enumStatus {
+  IN_PROGRESS = 'EM ANDAMENTO',
+  COMPLETED = 'CONCLUÍDO',
+  CANCELED = 'ABORTADO',
+  NOT_STARTED = 'NÃO INICIADO',
+}
 export interface Project {
   id?: number;
-  numProjet: number;
+  numProject: number;
   name: string;
   description: string;
-  leaderId: number;
+  initialDate: Date;
+  finalDate: Date;
+  status: enumStatus;
+  leaderId: number; // ID do líder do projeto
+  leader?: string; // Nome do líder (opcional, para exibição)
 }
-
 @Injectable({
   providedIn: 'root',
 })
